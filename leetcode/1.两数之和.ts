@@ -6,13 +6,11 @@
 
 // @lc code=start
 function twoSum(nums: number[], target: number): number[] {
-  const tempObj = Object.fromEntries(nums.map((i, idx) => [i, idx]));
+  const hashMap = Object.fromEntries(nums.map((v, idx) => [v, idx]));
   for (let i = 0; i < nums.length; i++) {
-    const otherNum = target - nums[i];
-    const oIdx = tempObj[otherNum];
-    if (oIdx !== undefined && oIdx !== i) {
-      return [i, oIdx];
-    }
+    const jValue = target - nums[i];
+    const j = hashMap[jValue];
+    if (j !== undefined && j !== i) return [i, j];
   }
   return [];
 }
